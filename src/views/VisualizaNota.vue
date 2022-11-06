@@ -33,11 +33,13 @@
         </div>
         </div>
 
-        <div class="d-flex justify-content-center mt-3">
-        <div>
-        <p v-for="(linha, index) in nota.conteudo" :key="index" class="m-0 p-0 fs-2"> {{ linha }} </p>
+       
+        <div class="mt-3 d-flex justify-content-center">
+        <div>    
+        <textarea id="conteudo" name="conteudo" rows="20" cols="30" v-model="nota.conteudo" class="border-0 fs-5" readonly></textarea>
         </div>
         </div>
+
     </div>
 </template>
 
@@ -59,8 +61,8 @@ export default {
         .get(id)
         .then((response) => {
             nota.value = response.data;
-            nota.value.conteudo = nota.value.conteudo.split("\n");
             nota.value.tom = nota.value.tomOriginal;
+            console.log(nota.value.conteudo)
         })
         
         onMounted(fetchNota);
@@ -70,7 +72,6 @@ export default {
             .get(id+"?tom=" + tomAlvo)
             .then((response) => {
                 nota.value = response.data;
-                nota.value.conteudo = nota.value.conteudo.split("\n");
                 nota.value.tom = tomAlvo;
             })  
         }

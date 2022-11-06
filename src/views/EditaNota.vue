@@ -1,14 +1,23 @@
 <template>
-    <div>
+    <div class="p-3">
+        <div  class="mb-3">
         <router-link to="/">Voltar</router-link>
+        </div>
+
+        <form>
+        <div class="mb-3">
+        <label for="titulo" class="form-label">Titulo:</label>
+        <input type="text" id="titulo" name="titulo" v-model="nota.titulo" class="form-control">
+        </div>
+
+        <div class="mb-3">
+        <label for="compositor" class="form-label">Compositor:</label>
+        <input type="text" id="compositor" name="compositor" v-model="nota.compositor" class="form-control">
+        </div>
         
-        <label for="titulo">Titulo:</label>
-        <input type="text" id="titulo" name="titulo" v-model="nota.titulo">
-
-        <label for="compositor">Compositor:</label>
-        <input type="text" id="compositor" name="compositor" v-model="nota.compositor">
-
-        <select v-model="nota.tomOriginal">
+        <div class="mb-3">
+        <label for="tom" class="form-label">Tom Original:</label>
+        <select v-model="nota.tomOriginal" name="tom" class="form-control">
             <option value="C">C</option>
             <option value="Db">Db</option>
             <option value="D">D</option>
@@ -22,10 +31,19 @@
             <option value="Bb">Bb</option>
             <option value="B">B</option>
         </select>
+        </div>
 
-        <textarea id="conteudo" name="conteudo" rows="20" cols="50" v-model="nota.conteudo"></textarea>
+        <div class="mb-3">
+        <div id="ajuda" class="form-text mb-1">Linhas com acordes só podem conter cifras e "|". Linhas de texto devem terminar com ":"</div>
+        <textarea id="conteudo" name="conteudo" rows="20" cols="50" v-model="nota.conteudo" class="form-control"></textarea>
+        </div>
 
-        <router-link to="/" @click="salvar()"><button>Salvar</button></router-link>
+        <div class="d-grid gap-2 d-md-flex justify-content-center">
+        <div>
+        <router-link to="/" @click="salvar()"><button class="btn btn-primary">Salvar nota</button></router-link>
+        </div>
+        </div>
+        </form>
 
     </div>
 </template>

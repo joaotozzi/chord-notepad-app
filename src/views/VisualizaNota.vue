@@ -1,9 +1,16 @@
 <template>
-    <div>
+    <div class="p-3">
+        <div  class="mb-3">
         <router-link to="/">Voltar</router-link>
-        <h1 id="titulo"> {{ nota.titulo }} </h1>
-        <p id="compositor"> {{ nota.compositor }}</p>
-        <select v-model="nota.tom" @change="alteraTom(nota.tom)">
+        </div>
+
+        <h1 id="titulo" class="text-center mb-0"> {{ nota.titulo }} </h1>
+        <p id="compositor" class="text-center mt-0"> {{ nota.compositor }}</p>
+        
+        <div class="d-flex justify-content-center">
+        <label for="tom" class="col-form-label">Tom:</label>
+        <div class="mx-2">    
+        <select v-model="nota.tom" @change="alteraTom(nota.tom)" name="tom" class="form-control">
             <option value="C">C</option>
             <option value="Db">Db</option>
             <option value="D">D</option>
@@ -17,9 +24,20 @@
             <option value="Bb">Bb</option>
             <option value="B">B</option>
         </select>
-        <router-link :to="'/editar/' + nota.id"><button>Editar</button></router-link>
+        </div>
+        <div class="d-flex align-items-center mx-2">
+        <input type="range" class="form-range" id="fonte" min="10" max="50" step=1 :value="fontSize">
+        </div>
+        <div class="mx-2">
+        <router-link :to="'/editar/' + nota.id"><button class="btn btn-primary">Editar</button></router-link>
+        </div>
+        </div>
 
-        <p id="conteudo" v-for="(linha, index) in nota.conteudo" :key="index"> {{ linha }} </p>
+        <div class="d-flex justify-content-center mt-3">
+        <div>
+        <p v-for="(linha, index) in nota.conteudo" :key="index" class="m-0 p-0 fs-2"> {{ linha }} </p>
+        </div>
+        </div>
     </div>
 </template>
 
@@ -67,17 +85,5 @@ export default {
 </script>
 
 <style>
-#conteudo {
-    text-align: left;
-    font-size: 20px;
-}
-
-#titulo{
-    margin-bottom: 0;
-}
-
-#compositor{
-    margin-top: 0;
-}
 
 </style>

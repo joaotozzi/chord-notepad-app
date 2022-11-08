@@ -26,7 +26,7 @@
         </select>
         </div>
         <div class="d-flex align-items-center mx-2">
-        <input type="range" class="form-range" id="fonte" min="10" max="50" step=1 :value="fontSize">
+        <input type="range" class="form-range" id="fonte" min="10" max="50" step=1 v-model="fonteTexto">
         </div>
         <div class="mx-2">
         <router-link :to="'/editar/' + nota.id"><button class="btn btn-primary">Editar</button></router-link>
@@ -36,7 +36,7 @@
        
         <div class="mt-3 d-flex justify-content-center">
         <div>    
-        <textarea id="conteudo" name="conteudo" rows="20" cols="30" v-model="nota.conteudo" class="border-0 fs-5" readonly></textarea>
+        <textarea :style="'font-size:' + fonteTexto + 'px;'"  id="conteudo" name="conteudo" rows="20" cols="20" v-model="nota.conteudo" class="border-0" readonly></textarea>
         </div>
         </div>
 
@@ -54,6 +54,8 @@ export default {
     setup(){
         const route = useRoute();
         const id = route.params.id;
+        
+        let fonteTexto = ref(30);
         
         const nota = ref([]);
         const fetchNota = () => 
@@ -79,7 +81,8 @@ export default {
 
         return { 
             nota, 
-            alteraTom
+            alteraTom,
+            fonteTexto
         };
     }
 }

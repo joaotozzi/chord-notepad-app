@@ -35,8 +35,8 @@
 
        
         <div class="mt-3 d-flex justify-content-center">
-        <div>    
-        <textarea :style="'font-size:' + fonteTexto + 'px;'"  id="conteudo" name="conteudo" rows="20" cols="20" v-model="nota.conteudo" class="border-0" readonly></textarea>
+        <div>
+        <pre :style="'font-size:' + fonteTexto + 'px'" id="conteudo"> {{ nota.conteudo }} </pre>
         </div>
         </div>
 
@@ -89,5 +89,9 @@ export default {
 </script>
 
 <style>
-
+#conteudo {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 </style>

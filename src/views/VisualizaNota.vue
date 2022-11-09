@@ -36,7 +36,7 @@
        
         <div class="mt-3 d-flex justify-content-center">
         <div>
-        <pre :style="'font-size:' + fonteTexto + 'px'" id="conteudo"> {{ nota.conteudo }} </pre>
+        <pre :style="'font-size:' + fonteTexto + 'px'" id="conteudo">{{nota.conteudo}}</pre>
         </div>
         </div>
 
@@ -55,7 +55,7 @@ export default {
         const route = useRoute();
         const id = route.params.id;
         
-        let fonteTexto = ref(30);
+        let fonteTexto = ref(20);
         
         const nota = ref([]);
         const fetchNota = () => 

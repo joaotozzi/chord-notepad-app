@@ -71,7 +71,9 @@ export default {
 
         const alteraTom = (tomAlvo) => {
           api
-            .get(id+"?tom=" + tomAlvo)
+            .put(id+"/transposicao", {
+                    novoTom: tomAlvo
+                })
             .then((response) => {
                 nota.value = response.data;
                 nota.value.tom = tomAlvo;
